@@ -1,0 +1,18 @@
+<?xml version ="1.0" encoding="utf-8"?>
+<!-- Copyright 2022 Sodexis
+    License OPL-1 (See LICENSE file for full copyright and licensing details). -->
+
+<odoo>
+
+    <record id="view_picking_withcarrier_out_form_inherit" model="ir.ui.view">
+        <field name="name">delivery.stock.picking_withcarrier.form.view.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="delivery.view_picking_withcarrier_out_form" />
+        <field name="arch" type="xml">
+            <button name="print_return_label" position="after">
+                <button name="print_shipment_label" string="Print Shipment Label" attrs="{'invisible':['|',('picking_type_code','!=','outgoing'),('carrier_tracking_ref','=',False)]}" type="object" context="{'print_via_button':True}"/>
+            </button>
+        </field>
+    </record>
+
+</odoo>
