@@ -4,12 +4,12 @@
 {
     "name": "Delivery Print Shipping Label",
     "summary": """This module allows to print shipment label after the DO validation""",
-    "version": "15.0.1.0.0",
+    "version": "14.0.1.0.0",
     "category": "Delivery",
     "website": "http://sodexis.com/",
     "author": "Sodexis",
     "license": "OPL-1",
-    "installable": True,
+    "installable": False,
     "application": False,
     "depends": [
         'delivery',
