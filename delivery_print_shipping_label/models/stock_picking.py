@@ -24,9 +24,12 @@ class StockPicking(models.Model):
 
     def print_shipment_label(self):
         printer_obj = self.env["printing.printer"]
-        printer = self.env.user.printing_printer_id or printer_obj.get_default()
+        printer_config_id = self.env['ir.config_parameter'].sudo().get_param('delivery_print_shipping_label.printer_id')
+        printer = printer_obj.search([('id','=',int(printer_config_id))])
         if not printer:
-            printer = printer_obj.search([],limit=1)
+            printer = self.env.user.printing_printer_id or printer_obj.get_default()
+            if not printer:
+                printer = printer_obj.search([],limit=1)
         if printer:
             message_id = self.env["mail.message"].search([('res_id','=',self.id),('model','=',self._name),('body','ilike', '%Shipment created into'), ('body','ilike', F'%{self.carrier_tracking_ref}%')],order='id desc',limit=1)
             for attachment in message_id.attachment_ids:

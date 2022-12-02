@@ -20,6 +20,10 @@
                              </div>
                          </div>
                      </div>
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <label for="printer_id" string="Select Printer" class="col-lg-4 o_light_label"/>
+                        <field name="printer_id" class="oe_inline"/>
+                    </div>
                  </xpath>
             </field>
     </record>
